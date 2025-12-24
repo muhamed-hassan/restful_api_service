@@ -1,4 +1,4 @@
-#### Please visit the wiki for more info https://github.com/muhamed-hassan/customer-service-api/wiki
+#### Please visit the [wiki](https://github.com/muhamed-hassan/customer-service-api/wiki) for more info
 
 ***
 
