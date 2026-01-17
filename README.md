@@ -1,4 +1,4 @@
-#### Please visit the [wiki](https://github.com/muhamed-hassan/customer-service-api/wiki) for more info
+#### Please visit the [wiki](https://github.com/muhamed-hassan/restful_api_service/wiki) for more info
 
 ***
 
