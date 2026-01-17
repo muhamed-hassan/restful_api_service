@@ -1,6 +1,10 @@
 package com.poc.web.models;
 
+import java.util.Objects;
+
 public class BriefUserInfoReadModel {
+	
+	private int id;
 	
 	private String name;
 
@@ -9,6 +13,14 @@ public class BriefUserInfoReadModel {
 	private String iban;
 	
 	private float balance;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getName() {
 		return name;
@@ -40,6 +52,26 @@ public class BriefUserInfoReadModel {
 
 	public void setBalance(float balance) {
 		this.balance = balance;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object object) {
+		if (this == object) {
+			return true;
+		}
+		if (object == null) {
+			return false;
+		}
+		if (getClass() != object.getClass()) {
+			return false;
+		}
+		BriefUserInfoReadModel other = (BriefUserInfoReadModel) object;
+		return id == other.getId();
 	}
 	
 }

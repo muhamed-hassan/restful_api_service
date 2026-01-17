@@ -1,6 +1,6 @@
 package com.poc.domain;
 
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -88,13 +88,13 @@ public class UserService {
 		masterAccountRepository.delete(masterAccount);
 	}
 	
-	public List<MasterAccount> getUsers(int pageIndex) {
+	public ArrayList<MasterAccount> getUsers(int pageIndex) {
 		
 		IbanConfigs ibanConfigs = ibanConfigsRepository.findOne(1);
 		
 		int pageSize = 10;
 		Pageable pageRequest = new PageRequest(pageIndex, pageSize);
-		List<MasterAccount> page = masterAccountRepository.findAll(pageRequest).getContent();
+		ArrayList<MasterAccount> page = (ArrayList<MasterAccount>) masterAccountRepository.findAll(pageRequest).getContent();
 		
 		if (page.isEmpty()) {
 			throw new NoDataFoundException();

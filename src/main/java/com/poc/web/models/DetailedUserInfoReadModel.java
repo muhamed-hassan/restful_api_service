@@ -2,6 +2,8 @@ package com.poc.web.models;
 
 public class DetailedUserInfoReadModel extends UserInfoModel {
 
+	private int id;
+	
 	private String name;
 	
 	private String dateOfBirth; // dd-MM-yyyy
@@ -11,6 +13,14 @@ public class DetailedUserInfoReadModel extends UserInfoModel {
 	private float balance;
 	
 	private String currency;
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getName() {
 		return name;

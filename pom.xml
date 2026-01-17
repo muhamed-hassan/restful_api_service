@@ -12,7 +12,7 @@
 	</parent>
 
 	<groupId>com.poc</groupId>
-	<artifactId>customer_service_api</artifactId>
+	<artifactId>restful_api_service</artifactId>
 	<version>1.0</version>
 
 	<dependencies>

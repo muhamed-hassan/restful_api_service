@@ -3,7 +3,6 @@ package com.poc.web.controllers;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -94,16 +93,17 @@ public class UserController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<BriefUserInfoReadModel>> getUsers(@RequestParam int pageIndex) {
+	public ResponseEntity<ArrayList<BriefUserInfoReadModel>> getUsers(@RequestParam int pageIndex) {
 			
-		List<MasterAccount> masterAccounts = userService.getUsers(pageIndex);
+		ArrayList<MasterAccount> masterAccounts = userService.getUsers(pageIndex);
 		
-		List<BriefUserInfoReadModel> userInfoReadModels = new ArrayList<BriefUserInfoReadModel>();
+		ArrayList<BriefUserInfoReadModel> userInfoReadModels = new ArrayList<BriefUserInfoReadModel>();
 		for (int cursor = 0; cursor < masterAccounts.size(); cursor++) {
 			
 			MasterAccount currentElement = masterAccounts.get(cursor);
 			
 			BriefUserInfoReadModel userInfoReadModel = new BriefUserInfoReadModel();
+			userInfoReadModel.setId(currentElement.getId());
 			userInfoReadModel.setName(currentElement.getUserInfo().getName());
 			userInfoReadModel.setNationalId(currentElement.getUserInfo().getNationalId());
 			userInfoReadModel.setIban(currentElement.getIban());
@@ -112,7 +112,7 @@ public class UserController {
 			userInfoReadModels.add(userInfoReadModel);
 		}		
 		
-		return new ResponseEntity<List<BriefUserInfoReadModel>>(userInfoReadModels, HttpStatus.OK);
+		return new ResponseEntity<ArrayList<BriefUserInfoReadModel>>(userInfoReadModels, HttpStatus.OK);
 	}
 	
 }
