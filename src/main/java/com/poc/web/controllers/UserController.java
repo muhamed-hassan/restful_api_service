@@ -3,6 +3,7 @@ package com.poc.web.controllers;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -95,7 +96,7 @@ public class UserController {
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<ArrayList<BriefUserInfoReadModel>> getUsers(@RequestParam int pageIndex) {
 			
-		ArrayList<MasterAccount> masterAccounts = userService.getUsers(pageIndex);
+		List<MasterAccount> masterAccounts = userService.getUsers(pageIndex);
 		
 		ArrayList<BriefUserInfoReadModel> userInfoReadModels = new ArrayList<BriefUserInfoReadModel>();
 		for (int cursor = 0; cursor < masterAccounts.size(); cursor++) {

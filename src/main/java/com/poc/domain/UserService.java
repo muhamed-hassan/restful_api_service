@@ -1,6 +1,6 @@
 package com.poc.domain;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +9,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.poc.web.error_handler.exceptions.NoDataFoundException;
-import com.poc.web.models.UserInfoUpdateModel;
 import com.poc.persistence.entities.Currency;
 import com.poc.persistence.entities.IbanConfigs;
 import com.poc.persistence.entities.MasterAccount;
@@ -19,6 +17,8 @@ import com.poc.persistence.repositories.CurrencyRepository;
 import com.poc.persistence.repositories.IbanConfigsRepository;
 import com.poc.persistence.repositories.MasterAccountRepository;
 import com.poc.persistence.repositories.UserInfoRepository;
+import com.poc.web.error_handler.exceptions.NoDataFoundException;
+import com.poc.web.models.UserInfoUpdateModel;
 
 @Service
 public class UserService {
@@ -88,13 +88,13 @@ public class UserService {
 		masterAccountRepository.delete(masterAccount);
 	}
 	
-	public ArrayList<MasterAccount> getUsers(int pageIndex) {
+	public List<MasterAccount> getUsers(int pageIndex) {
 		
 		IbanConfigs ibanConfigs = ibanConfigsRepository.findOne(1);
 		
 		int pageSize = 10;
 		Pageable pageRequest = new PageRequest(pageIndex, pageSize);
-		ArrayList<MasterAccount> page = (ArrayList<MasterAccount>) masterAccountRepository.findAll(pageRequest).getContent();
+		List<MasterAccount> page = masterAccountRepository.findAll(pageRequest).getContent();
 		
 		if (page.isEmpty()) {
 			throw new NoDataFoundException();
